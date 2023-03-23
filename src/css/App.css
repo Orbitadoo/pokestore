@@ -1,0 +1,166 @@
+/*=========================VARS=========================*/
+/*=========================GENERAL RESET RULES=========================*/
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: "Euclid Circular A", "Poppins";
+  background-color: #ECECEC;
+}
+
+.App {
+  display: block;
+}
+
+/*=========================NAVBAR=========================*/
+body {
+  background-color: #ECECEC;
+}
+
+nav div {
+  margin: 10px 0;
+  gap: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+nav div .pokelogo {
+  height: 50px;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+nav div .pokelogo:hover {
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+nav div h3 {
+  font-size: 24px;
+  color: #222222;
+  margin: 0;
+}
+nav div ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 10px;
+}
+nav div ul li {
+  list-style: none;
+  font-size: 14;
+}
+nav div ul li button {
+  padding: 8px 15px;
+  font-weight: bold;
+  background-color: #222222;
+  color: #222222;
+  border: 2px solid #222222;
+  border-radius: 5px;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+nav div ul li button:hover {
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+}
+nav div ul li .all {
+  background-color: #ECECEC;
+}
+nav div ul li .normal {
+  background-color: #A8A878;
+}
+nav div ul li .fire {
+  background-color: #F08030;
+}
+nav div ul li .water {
+  background-color: #6890F0;
+}
+nav div ul li .grass {
+  background-color: #78C850;
+}
+nav div ul li .electric {
+  background-color: #F8D030;
+}
+nav div ul li .ice {
+  background-color: #98D8D8;
+}
+nav div ul li .fighting {
+  background-color: #C03028;
+}
+nav div ul li .poison {
+  background-color: #A040A0;
+}
+nav div ul li .ground {
+  background-color: #E0C068;
+}
+nav div ul li .flying {
+  background-color: #A890F0;
+}
+nav div ul li .psychic {
+  background-color: #F85888;
+}
+nav div ul li .bug {
+  background-color: #A8B820;
+}
+nav div ul li .rock {
+  background-color: #B8A038;
+}
+nav div ul li .ghost {
+  background-color: #DFDFDF;
+}
+nav div ul li .dark {
+  background-color: #705848;
+}
+nav div ul li .dragon {
+  background-color: #7038F8;
+}
+nav div ul li .steel {
+  background-color: #B8B8D0;
+}
+nav div ul li .fairy {
+  background-color: #F0B6BC;
+}
+
+/*=========================CARD WIDGET=========================*/
+div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+div img {
+  height: 35px;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+div img:hover {
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+}
+div p {
+  font-weight: bold;
+  font-size: 24px;
+  margin: 0;
+}

@@ -1,0 +1,17 @@
+div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+        height: 35px;
+        transition: .2s;
+        &:hover {
+            transform: scale(1.05);
+        }
+    }
+    p {
+        font-weight: bold;
+        font-size: 24px;
+        margin: 0;
+    }
+}

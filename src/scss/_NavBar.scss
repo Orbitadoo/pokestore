@@ -1,0 +1,122 @@
+@import './vars';
+
+body {
+    background-color: map-get($color, "light-gray");
+}
+
+nav {
+    // BRANDING LOGO
+    div {
+        margin: 10px 0;
+        gap: 10px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-wrap: wrap;
+        
+        // PNG
+        .pokelogo {
+            height: 50px;
+
+            transition: 0.2s;
+            &:hover {
+                transform: scale(1.05);
+                transform: rotate(45deg);
+            }
+        }
+        
+        // TEXT
+        h3 {
+            font-size: 24px;
+            color: #222222;
+            margin: 0;
+        }
+    }
+    // LIST OF TYPES OF POKEMONS
+    div {
+        ul {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+
+            li {
+                list-style: none;
+                font-size: map-get($f-size, "navbar");
+                button {    
+                    padding: 8px 15px;
+                    font-weight: bold;
+                    background-color: map-get($color, "light-black");
+                    color: map-get($color, "light-black");
+                    border: 2px solid map-get($color, "light-black");
+                    border-radius: 5px;
+                    
+                    transition: .2s;
+                    &:hover {
+                        transform: scale(1.05);
+                    }
+                }
+
+                // STYLE OF ALL POKE-BUTTONS
+                .all {
+                    background-color: map-get($pokemon, "all");
+                }
+                .normal {
+                    background-color: map-get($pokemon, "normal");
+                }
+                .fire {
+                    background-color: map-get($pokemon, "fire");
+                }
+                .water {
+                    background-color: map-get($pokemon, "water");
+                }
+                .grass {
+                    background-color: map-get($pokemon, "grass");
+                }
+                .electric {
+                    background-color: map-get($pokemon, "electric");
+                }
+                .ice {
+                    background-color: map-get($pokemon, "ice");
+                }
+                .fighting {
+                    background-color: map-get($pokemon, "fighting");
+                }
+                .poison {
+                    background-color: map-get($pokemon, "poison");
+                }
+                .ground {
+                    background-color: map-get($pokemon, "ground");
+                }
+                .flying {
+                    background-color: map-get($pokemon, "flying");
+                }
+                .psychic {
+                    background-color: map-get($pokemon, "psychic");
+                }
+                .bug {
+                    background-color: map-get($pokemon, "bug");
+                }
+                .rock {
+                    background-color: map-get($pokemon, "rock");
+                }
+                .ghost {
+                    background-color: map-get($pokemon, "ghost");
+                }
+                .dark {
+                    background-color: map-get($pokemon, "dark");
+                }
+                .dragon {
+                    background-color: map-get($pokemon, "dragon");
+                }
+                .steel {
+                    background-color: map-get($pokemon, "steel");
+                }
+                .fairy {
+                    background-color: map-get($pokemon, "fairy");
+                }
+            }
+        }
+    }
+}

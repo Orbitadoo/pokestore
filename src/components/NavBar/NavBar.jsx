@@ -1,6 +1,6 @@
 import '../../scss/_NavBar.scss'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import CardWidget from '../CardWidget/CardWidget.js';
+import CardWidget from '../CardWidget/CardWidget.jsx';
 import pokelogo from './assets/pokestore-logo.png';
 
 const NavBar = () => {
@@ -15,7 +15,7 @@ const NavBar = () => {
 
                 {/* BRAND */}
                 <h3>
-                    PokeStore
+                    PokéStore
                 </h3>
 
                 {/* CART SHOPPING */}

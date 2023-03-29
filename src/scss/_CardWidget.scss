@@ -2,7 +2,7 @@ div {
     display: flex;
     justify-content: center;
     align-items: center;
-    img {
+    .shop-cart {
         height: 35px;
         transition: .2s;
         &:hover {

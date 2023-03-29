@@ -1,0 +1,56 @@
+@import './vars';
+
+div {
+    .handleCart {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        // CONTADOR + Y -
+        .btnCounter {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            padding: 4px 15px;
+            border: 2px solid map-get($color, "light-black");
+            border-radius: 5px;
+            .btnStock {
+                border: none;
+                margin: 0;
+                font-size: map-get($f-size, "onCart");
+                font-family: $font;
+                font-weight: bold;
+            }
+            p {
+                margin: 0;
+                font-size: map-get($f-size, 'onCart');
+            }
+        }
+        // AGREGAR AL CARRITO 
+        .btnAddCart {
+            .handleAdd {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 10px;
+                padding: 5px 15px;
+
+                color: map-get($color, 'addCart');
+                border: 2px solid map-get($color, "addCart");
+                border-radius: 5px;
+                img {
+                    height: 25px;
+                }
+                p {
+                    font-size: map-get($f-size, 'text');
+                }
+                
+                transition: .2s;
+                &:focus {
+                    transform: scale(.98);
+                }
+            }
+        }
+    }   
+}

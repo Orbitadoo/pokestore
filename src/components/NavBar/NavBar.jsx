@@ -2,7 +2,6 @@ import '../../scss/_NavBar.scss'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import CardWidget from '../CardWidget/CardWidget.jsx';
 import pokelogo from './assets/pokestore-logo.png';
-
 const NavBar = () => {
     return (
         <nav className="container">

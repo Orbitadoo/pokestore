@@ -1,14 +1,16 @@
 $font: "Euclid Circular A", "Poppins";
 
 $f-size:(
-    "heading" : 24,
-    "text" : 16,
-    "navbar" : 14,
+    "heading" : 24px,
+    "text" : 16px,
+    "navbar" : 14px,
+    "onCart" : 18px,
 );
 
 $color:(
     "light-gray" : #ECECEC,
     "light-black" : #222222,
+    "addCart" : #7038F8,
 );
 
 $pokemon:(

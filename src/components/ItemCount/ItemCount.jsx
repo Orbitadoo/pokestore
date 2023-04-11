@@ -2,27 +2,21 @@ import React from 'react';
 import '../../scss/_ItemCount.scss'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import pokeball from "./assets/pokeball.png"
-import { useState } from 'react';
-const ItemCount = ( {stock, initial, onAdd} ) => {
-    const [counter, setCounter] = useState(initial);
+import { useCount } from '../../hooks/useCount.js';
+const ItemCount = ( {initial, min, max} ) => {
+    
+    const {count, incr, decr} = useCount(1, 1, 10);
 
-    const decr = () => {
-        counter > 1 && setCounter(counter - 1);
-    }
-
-    const incr = () => {
-        stock > counter && setCounter(counter + 1);
-    }
     return (
         <div>
             <div className='handleCart'>
                 <div className="btnCounter">
-                    <button className='btnStock' onClick={decr}>-</button>
-                    <p>{counter}</p>
-                    <button className='btnStock' onClick={incr}>+</button>
+                    <button className='btnStock' onClick={() => decr()}>-</button>
+                    <p>{count}</p>
+                    <button className='btnStock' onClick={() => incr()}>+</button>
                 </div>
                 <div className="btnAddCart">
-                    <button className="handleAdd" onClick={() => onAdd(counter)} disabled={!stock}>
+                    <button className="handleAdd" onClick={() => console.log("Agregaste " + count + " Pokemon(es) al Carrito")}>
                         {/* AÑADIR PLURAL SI ES QUE UN USUARIO AGREGA MÁS DE 1 POKEMON */}
                         <img src={pokeball} alt=""/>
                         <p>Capturar Pokémones</p>

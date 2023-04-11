@@ -4,7 +4,7 @@ const ItemListContainer = ( {greeting} ) => {
     return (
         <div className='itemListContainer'>
             <h1> {greeting} </h1>
-            <ItemCount stock={10} initial={1} onAdd={(counter) => console.log("Agregaste " + counter + " Pokemon(es) al Carrito")}></ItemCount>
+            <ItemCount initial={1} min={1} max={10}></ItemCount>
         </div>
     )
 }

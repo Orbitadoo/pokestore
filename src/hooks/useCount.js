@@ -1,5 +1,5 @@
 import { useState } from 'react'
-export const useCount = ( {initial, min, max} ) => {
+export const useCount = ( initial, min, max ) => {
 
     const [count, setCount] = useState(initial);
 
@@ -7,5 +7,7 @@ export const useCount = ( {initial, min, max} ) => {
 
     const decr = () => count > min && setCount(count - 1);
 
-    return {count, incr, decr}
+    const onAdd = () => console.log("Agregaste " + count + " Pokemon(es) al Carrito");
+    
+    return {count, incr, decr, onAdd}
 }

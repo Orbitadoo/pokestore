@@ -5,7 +5,7 @@ import pokeball from "./assets/pokeball.png"
 import { useCount } from '../../hooks/useCount.js';
 const ItemCount = ( {initial, min, max} ) => {
     
-    const {count, incr, decr} = useCount(1, 1, 10);
+    const {count, incr, decr, onAdd} = useCount(1, 1, 10);
 
     return (
         <div>
@@ -16,7 +16,7 @@ const ItemCount = ( {initial, min, max} ) => {
                     <button className='btnStock' onClick={() => incr()}>+</button>
                 </div>
                 <div className="btnAddCart">
-                    <button className="handleAdd" onClick={() => console.log("Agregaste " + count + " Pokemon(es) al Carrito")}>
+                    <button className="handleAdd" onClick={() => onAdd()}>
                         {/* AÑADIR PLURAL SI ES QUE UN USUARIO AGREGA MÁS DE 1 POKEMON */}
                         <img src={pokeball} alt=""/>
                         <p>Capturar Pokémones</p>

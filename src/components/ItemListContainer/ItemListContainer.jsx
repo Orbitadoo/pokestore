@@ -4,7 +4,7 @@ const ItemListContainer = ( {greeting} ) => {
     return (
         <div className='itemListContainer'>
             <h1> {greeting} </h1>
-            <ItemCount initial={1} min={1} max={10}></ItemCount>
+            <ItemCount></ItemCount>
         </div>
     )
 }

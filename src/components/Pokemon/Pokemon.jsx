@@ -2,14 +2,16 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 function Pokemon() {
   const [pokemon, setPokemon] = useState([]);
-  const url = 'https://pokeapi.co/api/v2/pokemon/';
+  const URL = 'https://pokeapi.co/api/v2/pokemon/';
   useEffect(() => {
-    fetch(url)
+    for (let i = 1; i <= 20; i++) {
+      fetch(URL + i)
         .then((response) => response.json())
         .then(pokemon => {
-            console.log(pokemon)
             setPokemon(pokemon)
+            console.log(pokemon)
         })
+    }
   }, []);
 
   return (

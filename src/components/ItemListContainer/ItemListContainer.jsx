@@ -1,7 +1,7 @@
 import '../../scss/_ItemListContainer.scss'
-import ItemCount from '../ItemCount/ItemCount';
-import { getProducts } from '../../asyncMock';
 import { useState, useEffect } from 'react';
+import { getProducts } from '../../asyncMock';
+import ItemCount from '../ItemCount/ItemCount';
 const ItemListContainer = ( {greeting} ) => {
     
     const [products, setProducts] = useState([])

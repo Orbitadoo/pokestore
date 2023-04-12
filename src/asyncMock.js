@@ -1,7 +1,16 @@
 export const getProducts = () => {
-return new Promise((resolve) => {        
+return new Promise((resolve) => {   
+
+    const url = 'https://pokeapi.co/api/v2/pokemon/';
+     
     setTimeout(() => {
-        resolve()
-    }, 2)
+        resolve(() => {
+            fetch(url)
+            .then((response) => response.json())
+            .then(pokemon => {
+            console.log(pokemon.results)
+        })
+        })
+    }, 500)
 })
 }

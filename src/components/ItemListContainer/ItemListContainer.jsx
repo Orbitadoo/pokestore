@@ -2,7 +2,8 @@ import '../../scss/_ItemListContainer.scss'
 import ItemCount from '../ItemCount/ItemCount';
 import { getProducts } from '../../asyncMock';
 import { useEffect, useState } from 'react';
-const ItemListContainer = ( {greeting} ) => {
+import ItemList from '../ItemList/ItemList';
+const ItemListContainer = () => {
 
     const [products, setProducts] = useState([])
 
@@ -16,8 +17,8 @@ const ItemListContainer = ( {greeting} ) => {
 
     return (
         <div className='itemListContainer'>
-            <h1> {greeting} </h1>
             <ItemCount></ItemCount>
+            <ItemList products={products}/>
         </div>
     )
 }

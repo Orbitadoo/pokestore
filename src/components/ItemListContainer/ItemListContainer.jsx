@@ -11,7 +11,6 @@ const ItemListContainer = () => {
         getProducts()
             .then(response => {
                 setProducts(response)
-                console.log(products)
             })
     }, [products])
 

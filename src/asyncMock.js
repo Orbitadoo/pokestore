@@ -5,7 +5,8 @@ const products = [
         price: 1000,
         desc : "Pokemon type Grass",
         stock: 1,
-        img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"
+        img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png",
+        category: "grass"
     },
     {
         id: 2,
@@ -13,7 +14,8 @@ const products = [
         price: 1500,
         desc : "Pokemon type Grass",
         stock: 5,
-        img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/2.png"
+        img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/2.png",
+        category: "grass"
     },
     {
         id: 3,
@@ -21,7 +23,8 @@ const products = [
         price: 2000,
         desc : "Pokemon type Grass",
         stock: 5,
-        img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/3.png"
+        img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/3.png",
+        category: "grass"
     },
     {
         id: 4,
@@ -80,10 +83,10 @@ export const getProducts = () => {
     })
 }
 
-export const getProductsById = (productId) => {
+export const getProductById = (productId) => {
     return new Promise((resolve) => {
         setTimeout(() => {
             resolve(products.find(prod => prod.id === productId))
         }, 500);
     })
-}  
+}

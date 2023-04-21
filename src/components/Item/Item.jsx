@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 const Item = ( {id, name, img, price, stock} ) => {
   return (
     <div className='Item col-lg-4 col-md-6 col-12 d-flex'>
@@ -17,6 +18,10 @@ const Item = ( {id, name, img, price, stock} ) => {
             <div className="detail__price d-flex flex-row justify-content-center align-items-center">
                 <p>${price}</p>
             </div>
+            <div className="detail__button d-flex flex-row justify-content-center align-items-center">
+                <Link className='btn btn-primary' to={`/product/${id}`}>Ver Detalle</Link>
+            </div>
+
         </div>
     </div>
   )

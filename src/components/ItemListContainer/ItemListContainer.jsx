@@ -3,16 +3,27 @@ import ItemCount from '../ItemCount/ItemCount';
 import { getProducts } from '../../asyncMock';
 import { useEffect, useState } from 'react';
 import ItemList from '../ItemList/ItemList';
+import { useParams } from 'react-router';
 const ItemListContainer = () => {
 
     const [products, setProducts] = useState([])
 
+    const {category} = useParams()
+
     useEffect(() => {
-        getProducts()
+        if (category) {
+            getProducts()
+            .then(response => {
+                response.filter(prod => prod.categoria === category)
+                setProducts(response)
+            })
+        } else {
+            getProducts()
             .then(response => {
                 setProducts(response)
             })
-    }, [products])
+        }
+    }, [products, category])
 
     return (
         <div className='itemListContainer'>

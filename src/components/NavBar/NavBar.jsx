@@ -2,6 +2,7 @@ import '../../scss/_NavBar.scss'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import CardWidget from '../CardWidget/CardWidget.jsx';
 import pokelogo from './assets/pokestore-logo.png';
+import { Link } from 'react-router-dom';
 const NavBar = () => {
     return (
         <nav className="container">
@@ -24,10 +25,10 @@ const NavBar = () => {
             {/* NAVBAR */}
             <div>
                 <ul>
-                    <li><button className='all'>All</button></li>
-                    <li><button className='fire'>Fire</button></li>
-                    <li><button className='water'>Water</button></li>
-                    <li><button className='grass'>Grass</button></li>
+                    <Link to={"/"}><li><button className='all'>All</button></li></Link>
+                    <Link to={"/category/1"}><li><button className='fire'>Fire</button></li></Link>
+                    <Link to={"/category/2"}><li><button className='grass'>Grass</button></li></Link>
+                    <Link to={"/category/3"}><li><button className='water'>Water</button></li></Link>
                 </ul>
             </div>
         </nav>

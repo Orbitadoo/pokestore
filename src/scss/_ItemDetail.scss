@@ -1,8 +1,8 @@
 // THIS IS A COMPONENT LIKE ITEM
 .ItemDetail {
     .detail {
-        width: 600px;
-        height: 400px;
+        min-width: 600px;
+        min-height: 400px;
         
         background-color: map-get($color, 'clr-white');
         border-radius: 1rem;

@@ -26,8 +26,8 @@ const NavBar = () => {
             <div>
                 <ul>
                     <Link to={"/"}><li><button className='all'>All</button></li></Link>
-                    <Link to={"/category/1"}><li><button className='fire'>Fire</button></li></Link>
-                    <Link to={"/category/2"}><li><button className='grass'>Grass</button></li></Link>
+                    <Link to={"/category/1"}><li><button className='grass'>Grass</button></li></Link>
+                    <Link to={"/category/2"}><li><button className='fire'>Fire</button></li></Link>
                     <Link to={"/category/3"}><li><button className='water'>Water</button></li></Link>
                 </ul>
             </div>

@@ -19,7 +19,7 @@ const Item = ( {id, name, img, price, stock} ) => {
                 <p>${price}</p>
             </div>
             <div className="detail__button d-flex flex-row justify-content-center align-items-center">
-                <Link className='btn btn-primary' to={`/product/${id}`}>Ver Detalle</Link>
+                <Link className='btn btn-dark' to={`/product/${id}`}>Ver</Link>
             </div>
 
         </div>

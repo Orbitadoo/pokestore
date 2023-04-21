@@ -60,7 +60,7 @@ const products = [
         desc : "Pokemon type Water",
         stock: 1,
         img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/7.png",
-        category:3
+        category: 3
     },
     {
         id: 8,

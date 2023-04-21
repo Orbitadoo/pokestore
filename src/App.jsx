@@ -9,8 +9,8 @@ import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailCont
 function App() {
   return (
     <div className="App">
-      <NavBar></NavBar>
       <BrowserRouter>
+      <NavBar></NavBar>
         <Routes>
           <Route path='/' element={<ItemListContainer/>} />
           <Route path='/category/:category' element={<ItemListContainer/>} />

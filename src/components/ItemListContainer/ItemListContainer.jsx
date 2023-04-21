@@ -14,8 +14,8 @@ const ItemListContainer = () => {
         if (category) {
             getProducts()
             .then(response => {
-                response.filter(prod => prod.categoria === category)
-                setProducts(response)
+                const filtrarProductos = response.filter(prod => prod.category === parseInt(category))
+                setProducts(filtrarProductos)
             })
         } else {
             getProducts()

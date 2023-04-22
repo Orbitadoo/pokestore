@@ -7,7 +7,7 @@ export const useCount = ( initial, min, max ) => {
 
     const decr = () => count > min && setCount(count - 1);
 
-    const onAdd = () => console.log("Agregaste " + count + " Pokemon(es) al Carrito");
+    const onAdd = () => count;
     
     return {count, incr, decr, onAdd}
 }

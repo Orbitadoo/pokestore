@@ -3,9 +3,9 @@ import '../../scss/_ItemCount.scss'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import pokeball from "./assets/pokeball.png"
 import { useCount } from '../../hooks/useCount.js';
-const ItemCount = ( {initial, min, max} ) => {
+const ItemCount = ( {initial, min, max, onAdd} ) => {
     
-    const {count, incr, decr, onAdd} = useCount(1, 1, 10);
+    const {count, incr, decr} = useCount(initial, min, max);
 
     return (
         <div>
@@ -19,7 +19,7 @@ const ItemCount = ( {initial, min, max} ) => {
                     <button className="handleAdd" onClick={() => onAdd()}>
                         {/* AÑADIR PLURAL SI ES QUE UN USUARIO AGREGA MÁS DE 1 POKEMON */}
                         <img src={pokeball} alt=""/>
-                        <p>Capturar Pokémones</p>
+                        <p>Añadir al Carrito</p>
                     </button>
                 </div>
             </div>

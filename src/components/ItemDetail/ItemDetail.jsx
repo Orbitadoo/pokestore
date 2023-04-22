@@ -1,5 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
+import '../ItemCount/ItemCount'
+import ItemCount from '../ItemCount/ItemCount'
+import { Link } from 'react-router-dom'
 const ItemDetail = ( {id, img, name, price, stock, category, desc} ) => {
+
+    const [add, setAdd] = useState(true)
+
+    const handleAdd = () => {
+        setAdd(!add)
+        console.log(add)
+    }
 
   return (
     <div className='ItemDetail col-lg-4 col-md-6 col-12 d-flex'>
@@ -10,13 +20,21 @@ const ItemDetail = ( {id, img, name, price, stock, category, desc} ) => {
             <div className="detail__img d-flex flex-row justify-content-center align-items-center">
                 <img src={img} alt={name}/>
             </div>
-            <div className="detail__name d-flex flex-row justify-content-center align-items-center">
-                <h3 className="overflow-hidden">
-                    {name}
-                </h3>
-            </div>
             <div className="detail__price d-flex flex-row justify-content-center align-items-center">
                 <p>${price}</p>
+            </div>
+            <div className="detail__price d-flex flex-row justify-content-center align-items-center">
+                <p>{stock} {name} in Stock</p>
+            </div>
+            <div className="detail__button d-flex flex-row justify-content-center align-items-center">
+                {
+                add ? (
+                    <ItemCount initial={1} min={1} max={stock} onAdd={handleAdd}/>
+                    ) : 
+                    (
+                    <Link className='btn btn-primary' to="/cart">Terminar Compra</Link>
+                    )
+                }
             </div>
         </div>
     </div>

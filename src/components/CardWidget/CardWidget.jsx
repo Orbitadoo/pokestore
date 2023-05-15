@@ -1,10 +1,12 @@
 import '../../scss/_CardWidget.scss'
 import cart from "./assets/cart-shopping-solid.svg"
-const CardWidget = () => {
+import { useCarritoContext } from '../../context/CartContext'
+const CardWidget = ({cantCarrito}) => {
+    const {getItemQuantity} = useCarritoContext()
     return (
         <div>
             <img src={cart} alt="Shopping Cart" className='shop-cart'></img>
-            <p>0</p>
+            {getItemQuantity() > 0 && <span className='cantCarrito'>{getItemQuantity()}</span>}
         </div>
     )
 }

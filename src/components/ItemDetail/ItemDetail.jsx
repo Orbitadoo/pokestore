@@ -2,14 +2,22 @@ import React, { useState } from 'react'
 import '../ItemCount/ItemCount'
 import ItemCount from '../ItemCount/ItemCount'
 import { Link } from 'react-router-dom'
+import { useCarritoContext } from '../../context/CartContext'
 const ItemDetail = ( {id, img, name, price, stock, category, desc} ) => {
+    const {addItem} = useCarritoContext()
 
     const [add, setAdd] = useState(true)
+
+    const item = {
+        id, name, price
+    }
 
     const handleAdd = () => {
         setAdd(!add)
         console.log(add)
     }
+
+    addItem(item, count)
 
   return (
     <div className='ItemDetail col-lg-4 col-md-6 col-12 d-flex'>

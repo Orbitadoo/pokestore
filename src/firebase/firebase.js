@@ -18,6 +18,14 @@ const app = initializeApp(firebaseConfig);
 export const db = getFirestore()
 
 // Buy order
+export const getProducts = async () => {
+  const prods = await getDoc(collection(db, "products "))
+  const items = prods.docs.map(prod => {
+      return { ...prod.data(), id: prod.id }
+  })
+  return items
+}
+
 //Tanto Update como Delete no devuelven un estado
 export const updateProduct = async (id, info) => {
   await updateDoc(doc(db, "productos", id), info)

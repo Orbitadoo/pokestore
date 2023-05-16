@@ -3,6 +3,7 @@ import { useCarritoContext } from "../../context/CartContext"
 import { Link, useNavigate } from "react-router-dom"
 import { createOrdenCompra, db, deleteOrdenCompra, deleteProduct, getOrdenCompra, updateProduct } from '../../firebase/firebase'
 import { toast } from "react-toastify"
+import { getFirestore } from "@firebase/firestore"
 
 export const Checkout = () => {
 

@@ -10,13 +10,13 @@ const ItemListContainer = () => {
     const [products, setProducts] = useState([])
     const [loading, setLoading] = useState(true)
 
-    const {categoryID} = useParams()
+    const {category} = useParams()
 
     useEffect(() => {
         setLoading(true)
 
-        const collectionRef = categoryID
-            ? query(collection(db, 'products'), where ('category', '==', categoryID))
+        const collectionRef = category
+            ? query(collection(db, 'products'), where ('category', '==', category))
             : collection(db, 'products')
 
         getDocs(collectionRef)
@@ -33,7 +33,7 @@ const ItemListContainer = () => {
             .finally(() => {
                 setLoading(false)
             })
-    }, [categoryID])
+    }, [category])
 
     return (
         <div className='itemListContainer'>

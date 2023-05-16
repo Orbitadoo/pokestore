@@ -1,5 +1,7 @@
 import { initializeApp } from "firebase/app";
 import {getFirestore} from 'firebase/firestore'
+import { addDoc, collection, getDoc, doc, deleteDoc, updateDoc } from "firebase/firestore";
+
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -14,3 +16,34 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore()
+
+// Buy order
+//Tanto Update como Delete no devuelven un estado
+export const updateProduct = async (id, info) => {
+  await updateDoc(doc(db, "productos", id), info)
+}
+
+export const deleteProduct = async (id) => {
+  await deleteDoc(doc(db, "productos", id))
+}
+// CREATE y READ OrdenCompra
+
+export const createOrdenCompra = async (cliente, precioTotal, carrito, fecha) => {
+    const ordenCompra = await addDoc(collection(db, "ordenCompra"), {
+        cliente: cliente,
+        items: carrito,
+        precioTotal: precioTotal,
+        fecha: fecha
+    })
+    return ordenCompra
+}
+
+export const getOrdenCompra = async (id) => {
+    const ordenCompra = await getDoc(doc(db, "ordenCompra", id))
+    const item = { ...ordenCompra.data(), id: ordenCompra.id }
+    return item
+}
+
+export const deleteOrdenCompra = async (id) => {
+    await deleteDoc(doc(db, "ordenCompra", id))
+}

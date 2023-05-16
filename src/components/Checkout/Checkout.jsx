@@ -1,14 +1,17 @@
-import { useRef } from "react"
+import { useRef, useState } from "react"
 import { useCarritoContext } from "../../context/CartContext"
 import { Link, useNavigate } from "react-router-dom"
-import { createOrdenCompra, db, deleteOrdenCompra, deleteProduct, getOrdenCompra, getProducts, updateProduct } from '../../firebase/firebase'
+import { createOrdenCompra, getProducts, updateProduct } from '../../firebase/firebase'
 import { toast } from "react-toastify"
-import { getFirestore } from "@firebase/firestore"
 
 export const Checkout = () => {
+    const [user, setUser] = useState({})
 
     const datForm = useRef()
     const { carrito, totalPrice, emptyCart } = useCarritoContext()
+    const updateUser = (event) => {
+        setUser(user => ({...user,[event.target.name]:event.target.value}))
+    }
 
     let navigate = useNavigate()
     const consultarForm = (e) => {
@@ -32,7 +35,6 @@ export const Checkout = () => {
 
         createOrdenCompra(cliente, totalPrice(), aux2, new Date().toLocaleString('es-AR', { timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone }))
             .then(ordenCompra => {
-
                 toast(` 🛒 Muchas gracias por comprar con nosotros, su ID de compra es ${ordenCompra.id} por un total de ${totalPrice()}, en breve nos contactaremos para el envio`, {
                     position: "top-right",
                     autoClose: 5000,
@@ -44,8 +46,8 @@ export const Checkout = () => {
                     theme: "dark",
                 });
                 emptyCart()
-                e.target.reset() //Reset form
-                navigate("/") //Defino la ruta hacia donde quiero redirigir
+                e.target.reset()
+                navigate("/")
             })
             .catch(error => {
                 console.error(error)
@@ -58,7 +60,7 @@ export const Checkout = () => {
             {
                 carrito.length === 0 ?
                     <>
-                        <h2>Para finalizar compra debe tener productos en el carrito</h2>
+                        <h2>¡No seleccionaste nada del carrito!</h2>
                         <Link className="nav-link" to={"/"}><button className="btn btn-primary">Continuar comprando</button></Link>
                     </>
                     :
@@ -66,27 +68,23 @@ export const Checkout = () => {
                         <form onSubmit={consultarForm} ref={datForm}>
                             <div className="mb-3">
                                 <label htmlFor="nombre" className="form-label">Nombre y Apellido</label>
-                                <input type="text" className="form-control" name="nombre" required />
+                                <input onChange={updateUser} type="text" className="form-control" name="nombre" required />
                             </div>
                             <div className="mb-3">
                                 <label htmlFor="email" className="form-label">Email</label>
-                                <input type="email" className="form-control" name="email" />
+                                <input onChange={updateUser} type="email" className="form-control" name="email" />
                             </div>
                             <div className="mb-3">
                                 <label htmlFor="email" className="form-label">Repetir Email</label>
-                                <input type="email" className="form-control" name="emailRepetido" />
-                            </div>
-                            <div className="mb-3">
-                                <label htmlFor="dni" className="form-label">DNI</label>
-                                <input type="number" className="form-control" name="dni" />
+                                <input onChange={updateUser} type="email" className="form-control" name="emailRepetido" />
                             </div>
                             <div className="mb-3">
                                 <label htmlFor="celular" className="form-label">Numero telefonico</label>
-                                <input type="number" className="form-control" name="celular" />
+                                <input onChange={updateUser} type="number" className="form-control" name="celular" />
                             </div>
                             <div className="mb-3">
                                 <label htmlFor="direccion" className="form-label">Direccion</label>
-                                <input type="text" className="form-control" name="direccion" />
+                                <input onChange={updateUser} type="text" className="form-control" name="direccion" />
                             </div>
                             <button type="submit" className="btn btn-primary">Finalizar Compra</button>
                         </form>

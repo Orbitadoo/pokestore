@@ -5,7 +5,7 @@ const products = [
         price: 1000,
         desc : "Pokemon type Grass",
         stock: 1,
-        img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png",
+        img: "https://firebasestorage.googleapis.com/v0/b/pokestore-cd808.appspot.com/o/1.png?alt=media&token=7cf89864-623c-4b2d-9599-c10fce749630",
         category: 1
     },
     {
@@ -14,7 +14,7 @@ const products = [
         price: 1500,
         desc : "Pokemon type Grass",
         stock: 5,
-        img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/2.png",
+        img: "https://firebasestorage.googleapis.com/v0/b/pokestore-cd808.appspot.com/o/2.png?alt=media&token=9a841cdc-0430-4f6c-843b-6d711ac91eff",
         category: 1
     },
     {
@@ -23,7 +23,7 @@ const products = [
         price: 2000,
         desc : "Pokemon type Grass",
         stock: 5,
-        img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/3.png",
+        img: "https://firebasestorage.googleapis.com/v0/b/pokestore-cd808.appspot.com/o/3.png?alt=media&token=25a82737-a88f-414e-a800-8a7db1d05cb4",
         category: 1
     },
     {
@@ -32,7 +32,7 @@ const products = [
         price: 1000,
         desc : "Pokemon type Fire",
         stock: 1,
-        img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png",
+        img: "https://firebasestorage.googleapis.com/v0/b/pokestore-cd808.appspot.com/o/4.png?alt=media&token=f7f410b2-7447-4180-9fa7-f005b86ffba0",
         category: 2
     },
     {
@@ -41,7 +41,7 @@ const products = [
         price: 1500,
         desc : "Pokemon type Fire",
         stock: 5,
-        img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/5.png",
+        img: "https://firebasestorage.googleapis.com/v0/b/pokestore-cd808.appspot.com/o/5.png?alt=media&token=e2b88d99-680a-4691-95df-38ac2f300d51",
         category: 2
     },
     {
@@ -50,7 +50,7 @@ const products = [
         price: 2000,
         desc : "Pokemon type Fire",
         stock: 5,
-        img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/6.png",
+        img: "https://firebasestorage.googleapis.com/v0/b/pokestore-cd808.appspot.com/o/6.png?alt=media&token=4ba2ad76-583a-485d-bf6f-ab746c6faf19",
         category: 2
     },
     {
@@ -59,7 +59,7 @@ const products = [
         price: 1000,
         desc : "Pokemon type Water",
         stock: 1,
-        img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/7.png",
+        img: "https://firebasestorage.googleapis.com/v0/b/pokestore-cd808.appspot.com/o/7.png?alt=media&token=6fb34185-99f5-4ed8-9190-9ea13483ca00",
         category: 3
     },
     {
@@ -68,7 +68,7 @@ const products = [
         price: 1500,
         desc : "Pokemon type Water",
         stock: 5,
-        img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/8.png",
+        img: "https://firebasestorage.googleapis.com/v0/b/pokestore-cd808.appspot.com/o/8.png?alt=media&token=58f23f26-92c4-4391-a5c2-821f5f45c9ca",
         category: 3
     },
     {
@@ -77,7 +77,7 @@ const products = [
         price: 2000,
         desc : "Pokemon type Water",
         stock: 5,
-        img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/9.png",
+        img: "https://firebasestorage.googleapis.com/v0/b/pokestore-cd808.appspot.com/o/9.png?alt=media&token=f815d6df-fb1d-4ded-a043-b2bbac1dd754",
         category: 3
     }
 ]

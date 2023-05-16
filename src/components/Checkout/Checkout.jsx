@@ -1,60 +1,65 @@
 import { useRef, useState } from "react"
 import { useCarritoContext } from "../../context/CartContext"
 import { Link, useNavigate } from "react-router-dom"
-import { createOrdenCompra, getProducts, updateProduct } from '../../firebase/firebase'
-import { toast } from "react-toastify"
+import { db } from '../../firebase/firebase'
+import { collection, writeBatch, query, where, documentId, getDocs, addDoc } from "firebase/firestore"
 
 export const Checkout = () => {
     const [user, setUser] = useState({})
 
     const datForm = useRef()
-    const { carrito, totalPrice, emptyCart } = useCarritoContext()
+    const { carrito, totalPrice } = useCarritoContext()
     const updateUser = (event) => {
         setUser(user => ({...user,[event.target.name]:event.target.value}))
     }
+    
+    const createOrder = async() => {
+        const order = {
+        buyer: user,
+        cart: carrito,
+        total: totalPrice()
+        }
+
+        const batch = writeBatch(db)
+        const orderRef = collection(db, 'orders')
+        const productosRef = collection(db, "products");
+
+        const q = query(
+            productosRef,
+            where(
+              documentId(),
+              "in",
+              carrito.map((el) => el.id)
+            )
+          );
+
+        const productos = await getDocs(q);
+        const outOfStock = [];
+
+        productos.docs.forEach((doc) => {
+            const item = carrito.find((el) => el.id === doc.id);
+      
+            if (doc.data().stock >= item.quantity) {
+              batch.update(doc.ref, {
+                stock: doc.data().stock - item.quantity,
+              });
+            } else {
+              outOfStock.push(item);
+            }
+          });
+      
+          if (outOfStock.length === 0) {
+            addDoc(orderRef, order).then((doc) => {
+              batch.commit();
+              console.log(doc.id);
+            });
+          } else {
+            alert("Este Pokemon se quedó sin Stock!");
+          }
+    }
+
 
     let navigate = useNavigate()
-    const consultarForm = (e) => {
-        e.preventDefault()
-
-        const datosFormulario = new FormData(datForm.current)
-        const cliente = Object.fromEntries(datosFormulario)
-
-        const aux = [...carrito]
-        aux.forEach(prodCarrito => {
-            getProducts(prodCarrito.id).then(prodBBD => {
-                if (prodBBD.stock >= prodCarrito.quantity) {
-                    prodBBD.stock -= prodCarrito.quantity
-                    updateProduct(prodBBD.id, prodBBD) //Enviarle a la BDD el producto descontando su stock
-                } else {
-                    console.log("El stock no es mayor o igual a la cantidad que se quiere comprar")
-                }
-            })
-        })
-        const aux2 = aux.map(prod => ({ id: prod.id, quantity: prod.quantity, precio: prod.price }));
-
-        createOrdenCompra(cliente, totalPrice(), aux2, new Date().toLocaleString('es-AR', { timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone }))
-            .then(ordenCompra => {
-                toast(` 🛒 Muchas gracias por comprar con nosotros, su ID de compra es ${ordenCompra.id} por un total de ${totalPrice()}, en breve nos contactaremos para el envio`, {
-                    position: "top-right",
-                    autoClose: 5000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "dark",
-                });
-                emptyCart()
-                e.target.reset()
-                navigate("/")
-            })
-            .catch(error => {
-                console.error(error)
-            })
-
-
-    }
     return (
         <>
             {
@@ -65,7 +70,7 @@ export const Checkout = () => {
                     </>
                     :
                     <div className="container divForm" >
-                        <form onSubmit={consultarForm} ref={datForm}>
+                        <form onSubmit={createOrder} ref={datForm}>
                             <div className="mb-3">
                                 <label htmlFor="nombre" className="form-label">Nombre y Apellido</label>
                                 <input onChange={updateUser} type="text" className="form-control" name="nombre" required />

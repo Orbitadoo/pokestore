@@ -7,7 +7,7 @@ export const useCarritoContext = () => useContext(CarritoContext);
 export const CarritoProvider = (props) => {
 
     const [carrito, setCarrito] = useState([])
-
+    console.log(carrito)
     // Agregar - Quitar producto.
     // Vaciar carrito.
     // Obtener cantidad.
@@ -41,8 +41,8 @@ export const CarritoProvider = (props) => {
         setCarrito([])
     }
 
-    const getItemQuantity = () => {
-        return carrito.reduce((acum, prod) => acum += prod.cant, 0)
+    const getItemQuantity = (quantity) => {
+        return carrito.reduce((acum, prod) => acum += prod.quantity, 0)
     }
 
     const totalPrice = () => {

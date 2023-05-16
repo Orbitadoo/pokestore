@@ -12,12 +12,12 @@ const ItemDetail = ( {id, img, name, price, stock, category, desc} ) => {
         id, name, price
     }
 
-    const handleAdd = () => {
+    const handleAdd = (count) => {
         setAdd(!add)
         console.log(add)
+        addItem(item, count)
     }
 
-    addItem(item, count)
 
   return (
     <div className='ItemDetail col-lg-4 col-md-6 col-12 d-flex'>

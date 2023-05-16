@@ -16,7 +16,7 @@ const ItemCount = ( {initial, min, max, onAdd} ) => {
                     <button className='btnStock' onClick={() => incr()}>+</button>
                 </div>
                 <div className="btnAddCart">
-                    <button className="handleAdd" onClick={() => onAdd()}>
+                    <button className="handleAdd" onClick={() => onAdd(count)}>
                         {/* AÑADIR PLURAL SI ES QUE UN USUARIO AGREGA MÁS DE 1 POKEMON */}
                         <img src={pokeball} alt=""/>
                         <p>Añadir al Carrito</p>

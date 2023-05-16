@@ -8,12 +8,7 @@ export const CarritoProvider = (props) => {
 
     const [carrito, setCarrito] = useState([])
     console.log(carrito)
-    // Agregar - Quitar producto.
-    // Vaciar carrito.
-    // Obtener cantidad.
-    // Obtener precio total.
-    
-    // Buscar producto.
+
     const isInCart = (id) => {
         return carrito.some(prod => prod.id === id) // V o F
     }

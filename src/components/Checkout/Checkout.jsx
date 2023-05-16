@@ -14,7 +14,8 @@ export const Checkout = () => {
         setUser(user => ({...user,[event.target.name]:event.target.value}))
     }
     
-    const createOrder = async() => {
+    const createOrder = async(e) => {
+        e.preventDefault()
         const order = {
         buyer: user,
         cart: carrito,
@@ -38,7 +39,7 @@ export const Checkout = () => {
         const outOfStock = [];
 
         productos.docs.forEach((doc) => {
-            const item = carrito.find((el) => el.id === doc.id);
+            const item = carrito.find((el) => el.id === doc.id.toString());
       
             if (doc.data().stock >= item.quantity) {
               batch.update(doc.ref, {

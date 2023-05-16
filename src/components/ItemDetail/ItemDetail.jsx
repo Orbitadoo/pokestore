@@ -9,7 +9,7 @@ const ItemDetail = ( {id, img, name, price, stock, category, desc} ) => {
     const [add, setAdd] = useState(true)
 
     const item = {
-        id, name, price
+        id, name, price, img
     }
 
     const handleAdd = (count) => {

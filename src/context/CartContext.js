@@ -14,19 +14,21 @@ export const CarritoProvider = (props) => {
     }
 
     const addItem = (item, quantity) => {
-        if (isInCart(item.id)) {
-            const indice = carrito.findIndex(prod => prod.id === item.id)
-            const aux = [...carrito]
-            aux[indice].quantity = quantity
-            setCarrito(aux)
-        } else {
-            const newItem = {
-                ...item,
-                quantity: quantity
+        const newObj = {
+          ...item,
+          quantity,
+        };
+        if (isInCart(newObj.id)) {
+          carrito.map((el) => {
+            if (el.id === newObj.id) {
+              el.quantity += newObj.quantity;
             }
-            setCarrito([...carrito, newItem])
+            return el;
+          });
+        } else {
+          setCarrito([...carrito, newObj]);
         }
-    }
+      };
 
     const removeItem = (id) => {
         setCarrito(carrito.filer(prod => prod.id !== id))

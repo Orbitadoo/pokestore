@@ -1,6 +1,6 @@
 import { useRef, useState } from "react"
 import { useCarritoContext } from "../../context/CartContext"
-import { Link, useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { db } from '../../firebase/firebase'
 import { collection, writeBatch, query, where, documentId, getDocs, addDoc } from "firebase/firestore"
 
@@ -58,19 +58,10 @@ export const Checkout = () => {
           }
     }
 
-
-    let navigate = useNavigate()
     return (
         <>
-            {
-                carrito.length === 0 ?
-                    <>
-                        <h2>¡No seleccionaste nada del carrito!</h2>
-                        <Link className="nav-link" to={"/"}><button className="btn btn-primary">Continuar comprando</button></Link>
-                    </>
-                    :
                     <div className="container divForm" >
-                        <form onSubmit={createOrder} ref={datForm}>
+                        <form onSubmit={createOrder}  >
                             <div className="mb-3">
                                 <label htmlFor="nombre" className="form-label">Nombre y Apellido</label>
                                 <input onChange={updateUser} type="text" className="form-control" name="nombre" required />
@@ -79,7 +70,7 @@ export const Checkout = () => {
                                 <label htmlFor="email" className="form-label">Email</label>
                                 <input onChange={updateUser} type="email" className="form-control" name="email" />
                             </div>
-                            <div className="mb-3">
+                            {/* <div className="mb-3">
                                 <label htmlFor="email" className="form-label">Repetir Email</label>
                                 <input onChange={updateUser} type="email" className="form-control" name="emailRepetido" />
                             </div>
@@ -90,13 +81,10 @@ export const Checkout = () => {
                             <div className="mb-3">
                                 <label htmlFor="direccion" className="form-label">Direccion</label>
                                 <input onChange={updateUser} type="text" className="form-control" name="direccion" />
-                            </div>
+                            </div> */}
                             <button type="submit" className="btn btn-primary">Finalizar Compra</button>
                         </form>
                     </div>
-
-            }
-
         </>
 
     )

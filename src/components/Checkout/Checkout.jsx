@@ -1,29 +1,26 @@
 import { useRef } from "react"
 import { useCarritoContext } from "../../context/CartContext"
 import { Link, useNavigate } from "react-router-dom"
-import { createOrdenCompra, db, deleteOrdenCompra, deleteProduct, getOrdenCompra, updateProduct } from '../../firebase/firebase'
+import { createOrdenCompra, db, deleteOrdenCompra, deleteProduct, getOrdenCompra, getProducts, updateProduct } from '../../firebase/firebase'
 import { toast } from "react-toastify"
 import { getFirestore } from "@firebase/firestore"
 
 export const Checkout = () => {
 
-    const datForm = useRef() //Crear una referencia para consultar los valoresa actuales del form
+    const datForm = useRef()
     const { carrito, totalPrice, emptyCart } = useCarritoContext()
 
-    let navigate = useNavigate() //Devuelve la localizacion actual
+    let navigate = useNavigate()
     const consultarForm = (e) => {
-        //Consultar los datos del formulario
         e.preventDefault()
 
-        const datosFormulario = new FormData(datForm.current) //Pasar de HTML a Objeto Iterable
-        const cliente = Object.fromEntries(datosFormulario) //Pasar de objeto iterable a objeto simple
+        const datosFormulario = new FormData(datForm.current)
+        const cliente = Object.fromEntries(datosFormulario)
 
         const aux = [...carrito]
-
-        //Recorrer mi carrito y descontar el stock
         aux.forEach(prodCarrito => {
-            db(prodCarrito.id).then(prodBBD => {
-                if (prodBBD.stock >= prodCarrito.quantity) { //Si el stock de mi producto en la BDD es mayor o igual a la cantidad que el cliente quiere comprar de mi producto, descuento el stock
+            getProducts(prodCarrito.id).then(prodBBD => {
+                if (prodBBD.stock >= prodCarrito.quantity) {
                     prodBBD.stock -= prodCarrito.quantity
                     updateProduct(prodBBD.id, prodBBD) //Enviarle a la BDD el producto descontando su stock
                 } else {
@@ -31,7 +28,7 @@ export const Checkout = () => {
                 }
             })
         })
-        const aux2 = aux.map(prod => ({ id: prod.id, quantity: prod.quantity, precio: prod.precio }));
+        const aux2 = aux.map(prod => ({ id: prod.id, quantity: prod.quantity, precio: prod.price }));
 
         createOrdenCompra(cliente, totalPrice(), aux2, new Date().toLocaleString('es-AR', { timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone }))
             .then(ordenCompra => {

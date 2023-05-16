@@ -19,7 +19,7 @@ export const db = getFirestore()
 
 // Buy order
 export const getProducts = async () => {
-  const prods = await getDoc(collection(db, "products "))
+  const prods = await getDoc(collection(db, "products"))
   const items = prods.docs.map(prod => {
       return { ...prod.data(), id: prod.id }
   })

@@ -1,13 +1,14 @@
-import { useRef, useState } from "react"
+import { useState } from "react"
 import { useCarritoContext } from "../../context/CartContext"
-import { Link } from "react-router-dom"
 import { db } from '../../firebase/firebase'
 import { collection, writeBatch, query, where, documentId, getDocs, addDoc } from "firebase/firestore"
 
 export const Checkout = () => {
     const [user, setUser] = useState({})
+    const [orderId, setOrderId] = useState('')
 
-    const datForm = useRef()
+    
+
     const { carrito, totalPrice } = useCarritoContext()
     const updateUser = (event) => {
         setUser(user => ({...user,[event.target.name]:event.target.value}))
@@ -51,41 +52,33 @@ export const Checkout = () => {
           if (outOfStock.length === 0) {
             addDoc(orderRef, order).then((doc) => {
               batch.commit();
-              console.log(doc.id);
+              setOrderId(doc.id)
             });
           } else {
             alert("Este Pokemon se quedó sin Stock!");
           }
     }
 
+    if (orderId) {
+        return (
+            <h1>¡Gracias por tu compra! Tu numero de orden es: {orderId}</h1>
+        )
+    }
     return (
         <>
-                    <div className="container divForm" >
-                        <form onSubmit={createOrder}  >
-                            <div className="mb-3">
-                                <label htmlFor="nombre" className="form-label">Nombre y Apellido</label>
-                                <input onChange={updateUser} type="text" className="form-control" name="nombre" required />
-                            </div>
-                            <div className="mb-3">
-                                <label htmlFor="email" className="form-label">Email</label>
-                                <input onChange={updateUser} type="email" className="form-control" name="email" />
-                            </div>
-                            {/* <div className="mb-3">
-                                <label htmlFor="email" className="form-label">Repetir Email</label>
-                                <input onChange={updateUser} type="email" className="form-control" name="emailRepetido" />
-                            </div>
-                            <div className="mb-3">
-                                <label htmlFor="celular" className="form-label">Numero telefonico</label>
-                                <input onChange={updateUser} type="number" className="form-control" name="celular" />
-                            </div>
-                            <div className="mb-3">
-                                <label htmlFor="direccion" className="form-label">Direccion</label>
-                                <input onChange={updateUser} type="text" className="form-control" name="direccion" />
-                            </div> */}
-                            <button type="submit" className="btn btn-primary">Finalizar Compra</button>
-                        </form>
+            <div className="container divForm" >
+                <form onSubmit={createOrder}  >
+                    <div className="mb-3">
+                        <label htmlFor="nombre" className="form-label">Nombre y Apellido</label>
+                        <input onChange={updateUser} type="text" className="form-control" name="nombre" required />
                     </div>
+                    <div className="mb-3">
+                        <label htmlFor="email" className="form-label">Email</label>
+                        <input onChange={updateUser} type="email" className="form-control" name="email" />
+                    </div>
+                    <button type="submit" className="btn btn-primary">Finalizar Compra</button>
+                </form>
+            </div>
         </>
-
     )
 }
